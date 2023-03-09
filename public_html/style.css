@@ -1,0 +1,51 @@
+
+body{
+    
+	
+	height: 660px; 
+	margin: 20px 0 50px 20px;
+background-color:green;
+    
+	
+	
+}
+
+
+
+
+td{
+    width:150px;
+}
+@media only screen and (max-width: 800px){
+
+	
+	
+}
+.navbar{
+	
+  z-index:0; /*Add this*/
+  width:100%;
+  height:80px;
+ 
+}
+.menu{
+display: inline;
+
+    
+}
+
+
+
+p {
+	font-weight:500;
+
+	}
+
+input{
+	width: 200px;
+}
+select{
+	width: 200px;
+}
+
+

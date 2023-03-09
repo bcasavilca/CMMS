@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Título da página</title>
+    <meta charset="utf-8">
+    
+    <style>
+body {
+  font-size: 1rem;
+  background: #f5f5f5;
+}
+
+.tree {
+  position: relative;
+  background: white;
+  margin-top: 20px;
+  padding: 30px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: .85rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  
+  span {
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: .4px;
+    color: #a8a8a8;
+  }
+  
+  .fa-folder-open, .fa-folder {
+    color: #007bff;
+  }
+  
+  .fa-html5 {
+    color: #f21f10;
+  }
+  
+  ul {
+    padding-left: 5px;
+    list-style: none;
+    
+    li {
+      position: relative;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 15px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      
+      &:before {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        width: 10px;
+        height: 1px;
+        margin: auto;
+        content: '';
+        background-color: #666;
+      }
+      
+      &:after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        content: '';
+        background-color: #666;
+      }
+      
+      &:last-child:after {
+        height: 15px;
+      }
+    }
+    
+    a {
+      cursor: pointer;
+      
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+</style>
+  </head>
+  <body>
+   
+   
+<ul class="tree">
+  <li><i class="fa fa-folder-open"></i>
+    <details open>
+      
+      <summary class="sticky">Girassole</summary>
+      <ul>
+        <li>
+          <details>
+            <summary>struttura in ferro</summary>
+            <ul></ul>
+          </details>
+        
+        </li>
+        <li>
+          <details>
+            <summary>asse orizzontale/</summary>
+            <ul>
+              <li>cuscinetto</li>
+              <li>
+                  <details>
+                  <summary>parte mecanica</summary>
+                  <ul>
+                      <li>
+                  <details>
+                  <summary>motor</summary>
+                  <ul>
+                      <li>ingranaggio</li>
+                  </ul>
+                  </details>
+                  </li>
+                  </ul>
+                  </details>
+              </li>
+            </ul>
+          </details>
+        </li>
+         <li>
+          <details>
+            <summary>asse verticale/</summary>
+            <ul>
+              <li>cuscinetti</li>
+              <li><details>
+            <summary>atuatore/</summary>
+            <ul>
+              <li>motore dc</li>
+              <li>protezione del motore</li>
+              <li>encoder</li> 
+            </ul>
+          </details></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary>string di pannelli/</summary>
+            <ul>
+              <li>pannelo </li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </details>
+  </li>
+</ul>
+   
+   
+   
+   
+  </body>
+</html>
