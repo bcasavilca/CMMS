@@ -41,7 +41,7 @@ table, th, td {
   margin-left: 0;
   padding-left: 0;
   white-space: pre-line;
-  border:0.5px solid black;
+
   
 }
 tbody {
@@ -51,7 +51,7 @@ tbody {
 }
 .tabela{
     padding-left: 0;
-    border:0.5px solid black;
+
     width: 300px;
 }
 
@@ -161,7 +161,7 @@ tbody {
 </form>
 
 </div>
-<div><php? echo "Numero di registro: " . $num_results; ?></div>
+
 <div class="conteudo_intervento">
     
 <?php // Crie uma consulta SQL para recuperar os resultados da pesquisa
@@ -181,11 +181,12 @@ if ($result->num_rows > 0) {
     while($row_res = $result->fetch_assoc()) {
        
        
-    echo "<table class=tabela >";
-    echo "<tr >";
-    echo "<td class=cabecalho>ID:  </td>";
-    echo "<td class=preencher >".$row_res['chave']."</td>";
-    echo "</tr>";
+   echo "<table class=tabela >";
+echo "<tr >";
+echo "<td class='cabecalho'>ID</td>";
+
+echo "<td class='preencher'><a href='historic.php?id=" . $row_res['chave'] . "'>" . $row_res['chave'] . "</a></td>";
+echo "</tr>";
 	//--------------------------------------------------
 	echo "<tr >";
     echo "<td class=cabecalho>Girassole:  </td>";
@@ -402,15 +403,17 @@ $respostas = "SELECT * FROM tabela ORDER BY chave DESC" ;
 $res = mysqli_query($conexao,$respostas);
 //--------------------------------------------------------------------------------
 
+
 while($row_res = mysqli_fetch_assoc($res))
 {  
 
-
-    echo "<table class=tabela >";
-	/*echo "<tr >";
-    echo "<td class=cabecalho>ID:  </td>";
-    echo "<td class=preencher >#000".$row_res['chave']."</td>";
-    echo "</tr>";*/
+    echo "<fieldset style='width:300px;'>";  
+    echo "<table>";
+	echo "<tr >";
+    echo "<td class='cabecalho'>ID:</td>";
+    echo "<td class='preencher' id='row-". $row_res['chave'] . "'><a href='historic.php?id=" . $row_res['chave'] . "#row-" . $row_res['chave'] . "'>" . $row_res['chave'] . "</a></td>";
+    echo "</tr>";
+    
 	//--------------------------------------------------
 	echo "<tr >";
     echo "<td class=cabecalho>Girassole:  </td>";
@@ -585,18 +588,26 @@ while($row_res = mysqli_fetch_assoc($res))
     echo "<tr>";
     echo "<td class=preencher colspan=\"2\" ><a href=".$row_res['image'].">".$row_res['image']."</a></td>";
     echo "</tr>"; 
-    }   
+    } 
+     echo "</table >";
+    echo "</fieldset >";
     //----------------------------------------------------
+    echo "<fieldset style='width:300px;'><legend>Descrizione del lavoro:</legend>";
+     echo "<table >";
     echo "<tr>";
-    echo "<td colspan=\"2\" class=cabecalho >Descrizione del lavoro:  </td>";
+    echo "<td colspan=\"2\" class=cabecalho >  </td>";
     echo "</tr>";
     //----------------------------------------------------
     echo "<tr>";
     echo "<td class=preencher colspan=\"2\" >".$row_res['solucao']."</td>";
     echo "</tr>";
+     echo "</table >";
+    echo "</fieldset>";
     //---------------------------------------------------
-      echo "<tr>";
-    echo "<td colspan=\"2\" class=cabecalho >Conclusione:  </td>";
+    echo "<fieldset style='width:300px;'><legend>Conclusione:</legend>";
+     echo "<table >";
+    echo "<tr>";
+    echo "<td colspan=\"2\" class=cabecalho >  </td>";
     echo "</tr>";
     //----------------------------------------------------
     echo "<tr>";
@@ -636,10 +647,11 @@ while($row_res = mysqli_fetch_assoc($res))
     echo "</tr>";
     }
     
-    
-    
-    echo "</table></br></br>";
-    
+   
+
+    echo "</table>"; 
+    echo "</fieldset>
+    </br></br>";
 }
 
 
