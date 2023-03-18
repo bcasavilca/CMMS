@@ -7,140 +7,16 @@ include_once("connection.php");
 ?><!DOCTYPE html>
 <html>
 <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <!-- jquery -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <!-- css -->
-    <link rel="stylesheet" href="public_html/style.css">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="meteo.js"></script>
-<style>
-    
- 
-body{
-     font-family: 'Open Sans', sans-serif;
-    margin:0;
-    background-color:white;
-}
-table, th, td {
-  margin-left: 0;
-  padding-left: 0;
-  white-space: pre-line;
-  
-  
-}
-tbody {
-  
-  padding-left: 0;
-  
-}
-.tabela{
-    padding-left: 0;
-   
-    width: 300px;
-}
-.select{
-    width: 150px;
-}
-.100-241{
-    width: 150px;
-}
-.input{
-    width: 145px;
-}
-.cabecalho{
-    width: 150px;
-}
 
-     .menu {
-      display: flex;
-      background-color: yellow;
-      padding-top: 10px;
-      padding-left: 10px;
-      padding-bottom: 0;
-    }
-    
-     .blue-div {
-      background-color: white;
-      height: 20px;
-      margin: 0;
-      padding:20px;
-    }
-
-    /* estilos dos botões */
-    .menu button {
-      border: none;
-      background-color: inherit;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 10px;
-      margin-right: 10px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-    }
-
-    /* estilos do botão ativo */
-    .menu button.active {
-      background-color: white;
-      border-bottom: 2px solid black;
-    }
-    
-    .conteudo_intervento{
-        padding-top:0px;
-        padding-left:10px;
-    }
-
-    /* estilos do conteúdo */
-    .conteudo {
-      padding: 20px;
-      
-      border-top: none;
-      border-radius: 0 5px 5px 5px;
-    }
-
-    /* esconde o conteúdo inativo */
-    .conteudo:not(.ativo) {
-      display: none;
-    }
-    
-
-    /* estilos para dispositivos móveis */
-    @media (max-width: 768px) {
-      .menu {
-        flex-wrap: wrap;
-        background-color: yellow;
-        padding: 0;
-        margin: 0;
-        
-      }
-     /* estilos dos botões */
-    .menu button {
-      border: none;
-      background-color: inherit;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 10px;
-      margin-top: 10px;
-      margin-left: 10px;
-      margin-right: 10px;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
-    }
-
-    /* estilos do botão ativo */
-    .menu button.active {
-      background-color: white;
-      border-bottom: 2px solid black;
-    }
-      .conteudo {
-        border-radius: 0;
-        margin-top: -1px;
-      }
-    }
- 
-</style>
 	<title>manutenzione degli impiante</title>
 </head>
 <body>
@@ -154,34 +30,11 @@ tbody {
 <div class="blue-div">
     <div id="weather-results" class="meteo" defer></div>
     </div>
+    
 
 <div class="conteudo_intervento">
   
 <form class="form" id="form" action="mail.php" method="post" enctype="multipart/form-data">
-<script type="text/javascript">
-
-   
-$(function(){
-    var $select = $(".0-92");
-    for (i=1;i<=92;i++){
-        $select.append($('<option></option>').val(i).html(i))
-    } 
-});
-$(function(){
-    var $select = $(".100-241");
-    for (i=100;i<=241;i++){
-        $select.append($('<option></option>').val(i).html(i))
-    } 
-});
-$(function(){
-    var $select = $(".43-90");
-    for (i=43;i<=90;i++){
-        $select.append($('<option></option>').val(i).html(i))
-    } 
-});
-
-
-</script>
 
 <fieldset style="width:300px"> <legend>Descrizione del errore</legend>
 <table >
@@ -209,22 +62,12 @@ $(function(){
 
 <tr>
    <td class="cabecalho">Data:</td>
-   <td class="preencher"><input type="date" name="data" id="data" class="input" >
-       <script>
-               var date = new Date();
-               var currentDate = date.toISOString().substring(0 , 10);
-               document.querySelector('.date').value = currentDate;
-       </script>
+   <td class="preencher"><input type="date" name="data" id="data" class="input" value="<?php echo date('Y-m-d'); ?>" >
    </td>
 </tr> 
 <tr>
    <td class="cabecalho">Ore:</td>
-   <td class="preencher"><input type="time" name="hora" id="hora" class="input" >
-       <script>  
-               var date = new Date();
-               var currentTime = date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-               document.querySelector('.time').value = currentTime;
-       </script>
+   <td class="preencher"><input type="time" name="hora" id="hora" class="input" value="<?php echo date('H:i', strtotime('+1 hour')); ?>">
    </td>
 </tr> 
 
@@ -240,9 +83,13 @@ $(function(){
     <option value="10 - TL TIMEOUT ">10 - TL TIMEOUT </option>
     <option value="16">16 - </option>  
     <option value="521 - AZ TIMEOUT + FINECORSA ">521 - AZ TIMEOUT + FINECORSA </option>
+    <option value="531">531 - </option>
     <option value="523">523 - </option>
     <option value="1032">1032 - </option>
     <option value="2056 - BYPASS">2056 - BYPASS</option>
+    <option value="9224.0 - homing ok + outrange + power on">9224.0 - homing ok + outrange + power on</option>
+    
+
     </select>
     </td>
 </tr>
@@ -284,25 +131,43 @@ $(function(){
 
 <tr>
     <td class="cabecalho">Actual Position AZ:</td>
-    <td class="preencher"><select class="100-241" type="number" name="actual_AZ" id="actual_AZ" value="selezione" style="width:150px"><option>Selezione</option><option>0</option></select>
+    <td class="preencher"><select class="100-241" type="number" name="actual_AZ" id="actual_AZ" value="selezione" style="width:150px"><option>Selezione</option><option>0</option>
+    <?php
+        for ($i=100; $i<=241; $i++) {
+          echo "<option value='$i'>$i</option>";
+        }?>
+        </select>
     </td>
 </tr>
 
 <tr>
     <td  class="cabecalho">Actual Position TL</td>
-    <td class="preencher"><select class="43-90" type="number" name="actual_TL" id="actual_TL" value="selezione" style="width:150px"><option>Selezione</option><option>0</option></select>
+    <td class="preencher"><select class="43-90" type="number" name="actual_TL" id="actual_TL" value="selezione" style="width:150px"><option>Selezione</option><option>0</option>
+    <?php
+        for ($i=43; $i<=90; $i++) {
+          echo "<option value='$i'>$i</option>";
+        }?></select>
     </td>
 </tr>
 
 
 <tr>
     <td class="cabecalho">Setpoint AZ:</td>
-     <td class="preencher"><select class="100-241" type="number" name="setpoint_AZ" id="setpoint_AZ" value="selezione" style="width:150px"><option>Selezione</option><option>0</option></select>
+     <td class="preencher"><select class="100-241" type="number" name="setpoint_AZ" id="setpoint_AZ" value="selezione" style="width:150px"><option>Selezione</option><option>0</option>
+     <?php
+        for ($i=100; $i<=241; $i++) {
+          echo "<option value='$i'>$i</option>";
+        }?></select>
     </td>
 </tr>
 <tr>
     <td class="cabecalho">Setpoint TL:</td>
-     <td class="preencher"><select class="43-90" type="number" name="setpoint_TL" id="setpoint_TL" value="selezione" style="width:150px"><option>Selezione</option><option>0</option></select>
+     <td class="preencher"><select class="43-90" type="number" name="setpoint_TL" id="setpoint_TL" value="selezione" style="width:150px"><option>Selezione</option><option>0</option>
+        <?php
+        for ($i=100; $i<=241; $i++) {
+          echo "<option value='$i'>$i</option>";
+        }?>
+        </select>
     </td>
 </tr> 
 <tr>
@@ -324,6 +189,7 @@ $(function(){
     </select>
     </td>
 </tr>
+
 <tr>
    <td class="cabecalho">Manutenzione :</td>
     <td class="preencher"><span id="resultado"></span>
@@ -335,7 +201,7 @@ $(function(){
 </tr>
 
 <tr>
- <td colspan="2" ><div><input type="file" name="image"></div> </td> 
+ <td colspan="2" ><div><input type="file" name="image"  ></div> </td> 
 </tr>
 </table></fieldset>
 <fieldset style="width:300px"> <legend>Descrizione del lavoro</legend><table>
@@ -359,22 +225,14 @@ $(function(){
 </tr>
 <tr>
    <td class="cabecalho">Data finale:</td>
-   <td class="preencher"><input type="date" name="data_finale" id="data" class="input" >
-       <script>
-               var date = new Date();
-               var currentDate = date.toISOString().substring(0 , 10);
-               document.querySelector('.date').value = currentDate;
-       </script>
+   <td class="preencher"><input type="date" name="data_finale" id="data" class="input" value="<?php echo date('Y-m-d'); ?>" >
+       
    </td>
 </tr> 
 <tr>
    <td class="cabecalho">Ore finale:</td>
-   <td class="preencher"><input type="time" name="hora_finale" id="hora" class="input" >
-       <script>  
-               var date = new Date();
-               var currentTime = date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-               document.querySelector('.time').value = currentTime;
-       </script>
+   <td class="preencher"><input type="time" name="hora_finale" id="hora" class="input"  value="<?php echo date('H:i', strtotime('+1 hour')); ?>">
+      
    </td>
 </tr> 
 
